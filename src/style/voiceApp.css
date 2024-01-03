@@ -1,11 +1,12 @@
-.mainClass{
+.mainClass {
     background: linear-gradient(90deg, #5175bd 0%, #937d96 35%, #cf7777 100%);
     height: 98vh;
     width: 99vw;
 }
-.logo-voice{
+
+.logo-voice {
     padding: 15px;
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
     /* font-weight: bold; */
     color: white;
@@ -16,75 +17,101 @@
     border-bottom-right-radius: 35px;
     border: 1px rgba(0, 0, 0, 0.20) solid;
 }
-.navLink-voice{
+
+.navLink-voice {
     display: flex;
     justify-content: space-between;
     flex-flow: row wrap;
     align-items: center;
 }
-.navLink-voice li{
-color: white;
-font-size: large;
+
+.navLink-voice li {
+    color: white;
+    font-size: 20px;
 }
 
 .button-dashboard-voice {
-  background-color: #c2fbd7;
-  border-radius: 100px;
-  box-shadow: rgba(57, 42, 187, 0.2) 0 -25px 18px -14px inset,rgba(42, 57, 187, 0.15) 0 1px 2px,rgba(44, 65, 187, 0.15) 0 2px 4px,rgba(51, 43, 195, 0.15) 0 4px 8px,rgba(71, 42, 189, 0.15) 0 8px 16px,rgba(91, 141, 234, 0.15) 0 16px 32px;
-  color: rgb(126, 5, 67);
-  cursor: pointer;
-  display: inline-block;
-  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-  padding: 7px 20px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 250ms;
-  border: 0;
-  font-size: 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(57, 42, 187, 0.2) 0 -25px 18px -14px inset, rgba(42, 57, 187, 0.15) 0 1px 2px, rgba(44, 65, 187, 0.15) 0 2px 4px, rgba(51, 43, 195, 0.15) 0 4px 8px, rgba(71, 42, 189, 0.15) 0 8px 16px, rgba(91, 141, 234, 0.15) 0 16px 32px;
+    color: rgb(126, 5, 67);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
 .button-dashboard-voice:hover {
-    box-shadow: rgba(57, 42, 187, 0.2) 0 -25px 18px -14px inset,rgba(42, 57, 187, 0.15) 0 1px 2px,rgba(44, 65, 187, 0.15) 0 2px 4px,rgba(51, 43, 195, 0.15) 0 4px 8px,rgba(71, 42, 189, 0.15) 0 8px 16px,rgba(91, 141, 234, 0.15) 0 16px 32px;
+    box-shadow: rgba(57, 42, 187, 0.2) 0 -25px 18px -14px inset, rgba(42, 57, 187, 0.15) 0 1px 2px, rgba(44, 65, 187, 0.15) 0 2px 4px, rgba(51, 43, 195, 0.15) 0 4px 8px, rgba(71, 42, 189, 0.15) 0 8px 16px, rgba(91, 141, 234, 0.15) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
 }
 
 .btn-toggle label {
-	cursor: pointer;
-	text-indent: -9999px;
-	width: 90px;
-	height: 42px;
-	background: rgb(214, 213, 213);
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 90px;
+    height: 42px;
+    background: rgb(214, 213, 213);
     border: 1px solid #fff;
-	display: block;
-	border-radius: 100px;
-	position: relative;
+    display: block;
+    border-radius: 100px;
+    position: relative;
 }
+
 .btn-toggle label:after {
-	content: '';
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	width: 30px;
-	height: 30px;
-	background: #fff;
-	border-radius: 90px;
-	transition: 0.3s;
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
 }
+
 /* .btn-toggle label:active:after {
 	width: 30px;
 } */
-.btn-toggle input[type=checkbox]{
-	height: 0;
-	width: 0;
-	visibility: hidden;
+.btn-toggle input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
 }
-.btn-toggle input:checked + label {
-	background: #4e4e4e;
+
+.btn-toggle input:checked+label {
+    background: #4e4e4e;
 }
-.btn-toggle input:checked + label:after {
-	left: calc(100% - 5px);
-	transform: translateX(-100%);
+
+.btn-toggle input:checked+label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+.button-contentDub-voice {
+    cursor: pointer;
+    color: white;
+    padding: 7px 20px;
+    border: none;
+    font-size: 20px;
+    background: rgb(229 220 221 / 33%);
+    border-radius: 10px;
+}
+.btn-toggle-img img{
+    padding: 6px;
+    width: 250px;
+    border-radius: 40px;
+    border: 1px solid white;
+}
+.btn-toggle-img img:hover{
+    transform: scale(0.8);
+    
 }
