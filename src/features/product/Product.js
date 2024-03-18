@@ -2,18 +2,22 @@ import { useEffect, useState } from "react";
 import { Home } from "../../pages/Home";
 import "../../style/Product.css";
 import "../../App.css"
-import { fetchProduct } from "../product/productAPI";
 import { IoMdAddCircle } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { increment } from "./productSlice";
+import { increment,uniqueProductDetails } from "./productSlice";
 
+import axios from "axios";
+import { Link } from "react-router-dom";
+
+function fetchProduct() {
+  return axios.get("http://localhost:8080/products");
+
+}
 export function Product() {
-  useEffect(() => {
-    var res = fetchProduct();
-    console.log("response ---------->", res.data);
-  }, []);
+  
   const dispatch = useDispatch();
   var [product, setProduct] = useState([]);
+  var [copyProduct, setCopyProduct] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -21,12 +25,33 @@ export function Product() {
         // await async "fetchBooks()" function
         const prod = await fetchProduct();
         setProduct(prod.data);
-        console.log(prod);
+        setCopyProduct(prod.data);
       } catch (err) {
         console.log("Error occured when fetching books");
       }
     })();
   }, []);
+
+  function chandeProductWithSeletedValue(e) {
+    let productValue = e.target.value;
+    let productKey = e.target.id;
+    let typeofVal = e.target.name;
+
+    if (productValue) {
+      
+      if (typeofVal === 'int') {
+        productValue = parseInt(productValue)
+      } else if (typeofVal === 'float') {
+        productValue = parseFloat(productValue)
+      }
+
+      return setCopyProduct(product.filter(item => item[productKey] === productValue))
+    } else {
+      return setCopyProduct(product)
+    }
+  }
+
+
   return (
     <div>
       <Home />
@@ -54,11 +79,14 @@ export function Product() {
                 <select
                   class="form-select ml-3"
                   aria-label="Default select example"
+                  id="title"
+                  name="string"
+                  onChange={(e) => chandeProductWithSeletedValue(e)}
                 >
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option selected value=''>Item Name</option>
+                  {product.map((item, index) => (
+                    <><option value={item.title} key='title'>{item.title}</option></>
+                  ))}
                 </select>
               </div>
             </div>
@@ -67,11 +95,14 @@ export function Product() {
                 <select
                   class="form-select ml-3"
                   aria-label="Default select example"
+                  id="price"
+                  name="int"
+                  onChange={(e) => chandeProductWithSeletedValue(e)}
                 >
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option selected value=''>Item Price</option>
+                  {product.map((item, index) => (
+                    <><option value={item.price} key='price'>${item.price}</option></>
+                  ))}
                 </select>
               </div>
             </div>
@@ -80,31 +111,40 @@ export function Product() {
                 <select
                   class="form-select ml-3"
                   aria-label="Default select example"
+                  id="discountPercentage"
+                  name="float"
+                  onChange={(e) => chandeProductWithSeletedValue(e)}
                 >
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option selected value=''>Item DiscountPercentage</option>
+                  {product.map((item, index) => (
+                    <>
+                      <option value={item.discountPercentage} key='discountPercentage'>
+                        {item.discountPercentage} %
+                      </option>
+                    </>
+                  ))}
                 </select>
               </div>
             </div>
           </div>
           <div className="col-lg-9">
-            <div className="row m-2" style={{"overflow": "auto","height": "50rem"}}>
-              {product.map((item, e) => (
+            <div className="row m-2" style={{ "overflow": "auto", "height": "50rem" }}>
+              {copyProduct.map((item, e) => (
                 <div
                   className=" col-sm-2"
                   style={{
                     "border-radius": "9px",
                     border: "2px solid #cfcfcf85",
                     margin: "5px",
-                    // margin: "0px 5px 0px 5px"
+                    cursor:'pointer'
                   }}
                 >
                   <div id="" className="single-product">
                     <div class="part-1">
                       <span class="new p-2">{item.title}</span>
                       <div>
+                        <Link to='/login/product/SingleProduct' params={{item}} data-json={item}>
+                        {/* onClick={()=>{dispatch({type:uniqueProductDetails , data:item})}}  */}
                         <img
                           style={{
                             width: "10rem",
@@ -112,7 +152,8 @@ export function Product() {
                             margin: "5px",
                           }}
                           src={item.images[1]}
-                        />
+                          alt="error"
+                        /></Link>
                         {/* <button> */}
                         <IoMdAddCircle
                           onClick={() => {
@@ -129,7 +170,7 @@ export function Product() {
                     </div>
                     <div class="part-2">
                       <h3 class="product-title">Here Product Title</h3>
-                      <h4 class="product-price">$49.99</h4>
+                      <h4 class="product-price">${item.price}</h4>
                     </div>
                   </div>
                 </div>

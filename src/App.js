@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Product } from "./features/product/Product";
 import { Cart } from "./features/cart/Cart";
 import { MainDashboard } from "./features/voiceApp/MainDashBoard";
+import SingleProduct from "./pages/SingleProduct";
 
 function App() {
 
@@ -15,10 +16,11 @@ function App() {
     // <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginPage/>} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/login/product/SingleProduct" element={<SingleProduct/>} />
           <Route path="/Signup" element={<SignupPage/>} />
-          <Route path="/Signup/product" element={<Product/>} />
-          <Route path="/Signup/cart" element={<Cart/>} />
+          <Route path="/login/product" element={<Product/>} />
+          <Route path="/login/cart" element={<Cart/>} />
           {/* <Route path="/Signup/Cart" element={<Home/>} /> */}
           <Route path="/voiceApp" element={<MainDashboard/>}></Route>
         </Routes>

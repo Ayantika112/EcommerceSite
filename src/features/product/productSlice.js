@@ -10,13 +10,16 @@ export const productSlice = createSlice({
   reducers: {
     increment: (state , data) => {
       state.card.push(data.data)
-      console.log('state is ----> ',JSON.parse(JSON.stringify(state.card)))
     },
+    uniqueProductDetails:(state,data)=>{
+      console.log('particular product state --> '+state.card);
+      console.log('particular product data --> '+JSON.stringify(data.data));
+    }
   },
   extraReducers: (builder) => {
     
   },
 });
 
-export const { increment } = productSlice.actions;
+export const { increment , uniqueProductDetails} = productSlice.actions;
 export default productSlice.reducer;

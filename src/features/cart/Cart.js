@@ -3,12 +3,15 @@ import { Home } from "../../pages/Home";
 import "../../style/Product.css";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 export function Cart() {
   var [expand, setExpandMap] = useState({});
+  var addToCart = useSelector(item => item.product.card);
   useEffect(() => {
-    console.log('Hi')
+    console.log('Hi');
   }, [expand])
   return (
     <div>
@@ -37,7 +40,7 @@ export function Cart() {
                 className="col-lg-12 d-flex"
                 style={{ "align-items": "baseline" }}
               >
-                <FaLongArrowAltLeft />
+                <Link to={'/login/product'}><FaLongArrowAltLeft /></Link>
                 <h4 className="m-3">Continue shopping</h4>
               </div>
             </div>
@@ -47,7 +50,7 @@ export function Cart() {
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
                     <p class="mb-1">Shopping cart</p>
-                    <p class="mb-0">You have 4 items in your cart</p>
+                    <p class="mb-0">You have {addToCart.length} items in your cart</p>
                   </div>
                   <div>
                     <p class="mb-0">
@@ -61,38 +64,44 @@ export function Cart() {
                 </div>
               </div>
             </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <div class="card mb-3">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
-                          <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img3.webp"
-                            class="img-fluid rounded-3"
-                            alt="Shopping item"
-                            style={{ width: "65px" }}
-                          />
+            <div style={{ 'height': '60vh', 'overflow-x': 'hidden', 'overflow-y': 'auto' }}>
+              {addToCart.map((item) => (
+                <div className="row m-1">
+                  <div className="col-lg-12">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <div>
+                              <img
+                                src={item.images[1]}
+                                class="img-fluid rounded-3"
+                                alt="Shopping item"
+                                style={{ width: "65px" }}
+                              />
+                            </div>
+                            <div class="ms-3">
+                              <h5>{item.title}</h5>
+                              <p class="small mb-0">Onyx Black</p>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-column align-items-center">
+                            <div >
+                              <h5 class="fw-normal" style={{ 'white-space': 'nowrap' }}>Discount : {item.discountPercentage} %</h5>
+                            </div>
+                            <div >
+                              <span style={{"display": "flex"}}>
+                                <h5 class="mb-0">Price : ${item.price}</h5>
+                                <MdDeleteForever style={{ 'font-size': '22px', 'cursor': 'pointer' }} />
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                        <div class="ms-3">
-                          <h5>Canon EOS M50</h5>
-                          <p class="small mb-0">Onyx Black</p>
-                        </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center">
-                        <div style={{ width: "50px" }}>
-                          <h5 class="fw-normal mb-0">1</h5>
-                        </div>
-                        <div style={{ width: "80px" }}>
-                          <h5 class="mb-0">$1199</h5>
-                        </div>
-                        <MdDeleteForever style={{ 'font-size': '22px', 'cursor': 'pointer' }} />
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
           <div className="col-lg-4 mb-3 mr-2">
@@ -121,7 +130,7 @@ export function Cart() {
                           'count': 0
                         }
                       } else {
-                        obj['btnExpandForAddress']['count'] = obj['btnExpandForAddress']['count'] == 1 ? 0 : 1;
+                        obj['btnExpandForAddress']['count'] = obj['btnExpandForAddress']['count'] === 1 ? 0 : 1;
                       }
                       setExpandMap({ ...obj });
                       console.log('click ->' + JSON.stringify(expand))
