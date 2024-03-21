@@ -4,10 +4,10 @@ import "../../style/Product.css";
 import "../../App.css"
 import { IoMdAddCircle } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { increment,uniqueProductDetails } from "./productSlice";
+import { increment } from "./productSlice";
 
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function fetchProduct() {
   return axios.get("http://localhost:8080/products");
@@ -143,7 +143,7 @@ export function Product() {
                     <div class="part-1">
                       <span class="new p-2">{item.title}</span>
                       <div>
-                        <Link to='/login/product/SingleProduct' params={{item}} data-json={item}>
+                        <Link to={{pathname:`/login/product/SingleProduct/${item.id}`}} >
                         {/* onClick={()=>{dispatch({type:uniqueProductDetails , data:item})}}  */}
                         <img
                           style={{

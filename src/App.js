@@ -10,14 +10,12 @@ import { MainDashboard } from "./features/voiceApp/MainDashBoard";
 import SingleProduct from "./pages/SingleProduct";
 
 function App() {
-
-  
   return (
     // <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginPage/>} />
-          <Route path="/login/product/SingleProduct" element={<SingleProduct/>} />
+          <Route exact path="/login/product/SingleProduct/:id" element={<SingleProduct/>} />
           <Route path="/Signup" element={<SignupPage/>} />
           <Route path="/login/product" element={<Product/>} />
           <Route path="/login/cart" element={<Cart/>} />

@@ -1,13 +1,20 @@
-import { useParams } from "react-router-dom"
+import axios from "axios";
+import { useParams} from "react-router-dom";
 
 function SingleProduct() {
-    const getData = useParams();
-    console.log('getData----> '+JSON.stringify(getData));
+    let {id} = new useParams();
+    console.log({id});
+
+    axios.get(`http://localhost:8080/products/${id}`).then((data)=>{
+        console.log(data);
+    }).catch((error)=>{
+        console.log(error);
+    })
+
     return (
         <>
-            <h1>tu jji gyftftd ctft</h1>
+            <h1>tu jji gyftftd ctft {id} </h1>
         </>
     )
-
 }
-export default SingleProduct
+export default SingleProduct;
