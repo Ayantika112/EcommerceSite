@@ -3,3 +3,7 @@
     justify-content: center;
     text-align: center;
 }
+.parentBodyStyle{
+    display: flex;
+    flex-direction: column;
+}

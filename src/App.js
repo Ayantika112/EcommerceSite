@@ -12,17 +12,17 @@ import SingleProduct from "./pages/SingleProduct";
 function App() {
   return (
     // <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<LoginPage/>} />
-          <Route exact path="/login/product/SingleProduct/:id" element={<SingleProduct/>} />
-          <Route path="/Signup" element={<SignupPage/>} />
-          <Route path="/login/product" element={<Product/>} />
-          <Route path="/login/cart" element={<Cart/>} />
-          {/* <Route path="/Signup/Cart" element={<Home/>} /> */}
-          <Route path="/voiceApp" element={<MainDashboard/>}></Route>
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/Signup" element={<SignupPage />} />
+        <Route path="login" element={<LoginPage />}>
+          <Route path="product" element={<Product />} />
+          <Route path="cart" element={<Cart />} />
+          <Route exact path="product/SingleProduct/:id" element={<SingleProduct />} />
+        </Route>
+        <Route path="/voiceApp" element={<MainDashboard />}></Route>
+      </Routes>
+    </BrowserRouter>
     // </div>
   );
 }

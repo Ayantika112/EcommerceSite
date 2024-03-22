@@ -7,7 +7,8 @@ import validator from 'validator';
 
 function LoginPage() {
   var [troggleCount, setTroggleCount] = useState(0);
-  const [emailError, setEmailError] = useState(null)
+  const [emailError, setEmailError] = useState(null);
+  const [checking, setChecking] = useState(false);
   const validateEmail = (e) => {
     var email = e.target.value
 
@@ -17,6 +18,7 @@ function LoginPage() {
       setEmailError(false)
     }
   }
+
   return (
     <>
       <div className="loginPage d-flex justify-content-center w-100 card">
@@ -71,7 +73,9 @@ function LoginPage() {
 
             {/* <!-- Submit button --> */}
             <Link to="/login/product">
-              <button type="button" className="btn btn-primary w-100 mb-4">
+              <button type="button" className="btn btn-primary w-100 mb-4" onClick={(()=>{
+                setChecking(true);
+              })}>
                 Log In
               </button>
             </Link>
@@ -83,10 +87,11 @@ function LoginPage() {
               </p>
             </div>
           </form>
-          <Outlet />
         </div>
       </div>
-      <div className="parentBox">
+      {checking ? <Outlet /> : <Link to={'/login'}/> }
+      
+      {/* <div className="parentBox">
         <div className="ch">1</div>
         <div className="ch">2</div>
         <div className="ch">2</div>
@@ -95,7 +100,7 @@ function LoginPage() {
         <div className="ch">2</div>
         <div className="ch">2</div>
         <div className="ch">3</div>
-      </div>
+      </div> */}
     </>
   );
 }

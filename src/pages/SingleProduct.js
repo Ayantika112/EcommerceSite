@@ -13,9 +13,7 @@ function SingleProduct() {
         }).catch((error) => {
             console.log(error);
         })
-    }, [])
-
-
+    }, []);
     return (
         <>
             <div className="parentBody">
@@ -24,8 +22,11 @@ function SingleProduct() {
                         <b>{productData.title}</b>
                     </div>
                     <div className="card-body">
-                        <div>
+                        <div className="parentBodyStyle">
                             <img src="" alt="Error"/>
+                            <span>description :- {productData.description} </span>
+                            <span>category :- {productData.category} </span>
+                            <span>discountPercentage :- {productData.discountPercentage} </span>
                         </div>
                     </div>
                 </div>
