@@ -1,19 +1,35 @@
 import axios from "axios";
-import { useParams} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import '../style/SingleProduct.css'
 
 function SingleProduct() {
-    let {id} = new useParams();
-    console.log({id});
+    var { id } = new useParams();
+    var [productData, setProductData] = useState({});
+    useEffect(() => {
+        axios.get(`http://localhost:8080/products/${id}`).then((data) => {
+            setProductData(data.data);
+            console.log(data.data);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }, [])
 
-    axios.get(`http://localhost:8080/products/${id}`).then((data)=>{
-        console.log(data);
-    }).catch((error)=>{
-        console.log(error);
-    })
 
     return (
         <>
-            <h1>tu jji gyftftd ctft {id} </h1>
+            <div className="parentBody">
+                <div className="card">
+                    <div className="card-header">
+                        <b>{productData.title}</b>
+                    </div>
+                    <div className="card-body">
+                        <div>
+                            <img src="" alt="Error"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
