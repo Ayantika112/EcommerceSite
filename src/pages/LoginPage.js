@@ -4,12 +4,19 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { Outlet, Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import validator from 'validator';
+import { useDispatch, useSelector } from "react-redux";
+import {isLogging} from '../features/product/productSlice';
+import { setLoggingValue } from "../features/product/productSlice";
 
 function LoginPage() {
   var [troggleCount, setTroggleCount] = useState(0);
-  const [emailError, setEmailError] = useState(null);
-  const [checking, setChecking] = useState(false);
-  const validateEmail = (e) => {
+  var [emailError, setEmailError] = useState(null);
+  var [checking, setChecking] = useState(false);
+  var isLoggingTrue = useSelector(isLogging);
+  var dispatch = useDispatch();
+  console.log('-- isLoggingTrue --> ' + JSON.stringify(isLoggingTrue));
+
+  var validateEmail = (e) => {
     var email = e.target.value;
     if(validator.isEmail(email)){
       setEmailError(true);
@@ -75,6 +82,7 @@ function LoginPage() {
               <Link to="/login/product">
                 <button type="button" className="btn btn-primary w-100 mb-4" onClick={(() => {
                   setChecking(true);
+                  dispatch({'type':setLoggingValue , 'data': isLoggingTrue.isLogging})
                 })}>
                   Log In
                 </button>
