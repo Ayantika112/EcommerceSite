@@ -145,13 +145,8 @@ export function Product() {
                       <div>
                         <Link to={{pathname:`/login/product/SingleProduct/${item.id}`}} >
                         {/* onClick={()=>{dispatch({type:uniqueProductDetails , data:item})}}  */}
-                        <img
-                          style={{
-                            width: "10rem",
-                            height: "12rem",
-                            margin: "5px",
-                          }}
-                          src={item.images[1]}
+                        <img className="imageSize"
+                          src={"https://www.ippc.int/static/img/images/icone-home-capacity_B1.png"}
                           alt="error"
                         /></Link>
                         {/* <button> */}

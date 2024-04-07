@@ -11,7 +11,6 @@ import { setLoggingValue } from "../features/product/productSlice";
 function LoginPage() {
   var [troggleCount, setTroggleCount] = useState(0);
   var [emailError, setEmailError] = useState(null);
-  // var [checking, setChecking] = useState(false);
   var isLoggingTrue = useSelector(isLogging);
   var dispatch = useDispatch();
   console.log('-- isLoggingTrue --> ' + JSON.stringify(isLoggingTrue));
@@ -27,7 +26,7 @@ function LoginPage() {
 
   return (
     <>
-      {!isLoggingTrue ?
+      {!isLoggingTrue.isLogging ?
         <div className="loginPage d-flex justify-content-center w-100 card">
           <div className="card-body">
             <form>
@@ -82,7 +81,7 @@ function LoginPage() {
               <Link to="/login/product">
                 <button type="button" className="btn btn-primary w-100 mb-4" onClick={(() => {
                   // setChecking(true);
-                  dispatch({'type':setLoggingValue , 'data': isLoggingTrue.isLogging})
+                  dispatch({'type':setLoggingValue , 'data': !isLoggingTrue.isLogging})
                 })}>
                   Log In
                 </button>
@@ -98,7 +97,7 @@ function LoginPage() {
           </div>
         </div> : null
       }
-      {isLoggingTrue ? <Outlet /> : <Link to={'/login'} />}
+      {isLoggingTrue.isLogging ? <Outlet /> : <Link to={'/login'} />}
 
       {/* <div className="parentBox">
         <div className="ch">1</div>

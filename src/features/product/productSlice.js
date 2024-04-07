@@ -12,10 +12,10 @@ export const productSlice = createSlice({
     increment: (state , data) => {
       state.card.push(data.data)
     },
-    setLoggingValue: (state , data) => {
-      console.log('Before changeing the state --> '+JSON.stringify(data));
-      state.isLogging = data.flag;
-      console.log('After changeing the state --> '+JSON.stringify(data));
+    setLoggingValue: (state) => {
+      // console.log('Before changeing the state --> '+JSON.stringify(state));
+      state.isLogging = true;
+      // console.log('After changeing the state --> '+JSON.stringify(state));
     },
     uniqueProductDetails:(state,data)=>{
       console.log('particular product state --> '+state.card);

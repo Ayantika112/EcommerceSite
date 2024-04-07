@@ -27,4 +27,8 @@ a,a:hover {
 .part-2 h4{
     font-size: medium;
 }
-
+.imageSize{
+    width: 100px;
+    height: 100px;
+    align-items: center;
+}

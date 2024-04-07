@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import '../style/SingleProduct.css'
+import '../style/SingleProduct.css';
+import { FaLongArrowAltLeft } from "react-icons/fa";
+import { Navbar } from "../features/navbar/Navbar";
+import '../style/Product.css'
 
 function SingleProduct() {
     var { id } = new useParams();
@@ -16,14 +19,15 @@ function SingleProduct() {
     }, []);
     return (
         <>
-            <div className="parentBody">
+            <Navbar />
+            <div className="parentBody mt-4">
                 <div className="card">
-                    <div className="card-header">
-                        <b>{productData.title}</b>
+                    <div className="card-header card-header-css">
+                        <div><b>{productData.title}</b></div>
                     </div>
                     <div className="card-body">
                         <div className="parentBodyStyle">
-                            <img src="" alt="Error"/>
+                            <img className="imageSize" src="https://www.ippc.int/static/img/images/icone-home-capacity_B1.png" alt='error' />
                             <span>description :- {productData.description} </span>
                             <span>category :- {productData.category} </span>
                             <span>discountPercentage :- {productData.discountPercentage} </span>
