@@ -8,6 +8,8 @@ import { Product } from "./features/product/Product";
 import { Cart } from "./features/cart/Cart";
 import { MainDashboard } from "./features/voiceApp/MainDashBoard";
 import SingleProduct from "./pages/SingleProduct";
+import LogInPagedesign from "./features/component-with-style/LogInPagedesign";
+import DesignLogin from "./features/component-with-style/logIn/DesignLogin";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route exact path="product/SingleProduct/:id" element={<SingleProduct />} />
         </Route>
         <Route path="/voiceApp" element={<MainDashboard />}></Route>
+        <Route path="/designLoginPage" element={<LogInPagedesign/>}></Route>
+        <Route path="/DesignLogin" element={<DesignLogin/>}/>
       </Routes>
     </BrowserRouter>
     // </div>

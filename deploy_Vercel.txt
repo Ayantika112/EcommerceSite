@@ -1,0 +1,2 @@
+deploy path - https://ecommerce-site-ashen.vercel.app/login
+vercel project - https://vercel.com/ayantika-chakrabortys-projects/ecommerce-site
