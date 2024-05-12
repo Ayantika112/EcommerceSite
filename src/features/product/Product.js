@@ -65,6 +65,51 @@ function fetchProduct() {
           "https://i.dummyjson.com/data/products/3/1.jpg"
         ]
       },
+      {
+        "id": 4,
+        "title": "Samsung Universe 9",
+        "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+        "price": 1249,
+        "discountPercentage": 15.46,
+        "rating": 4.09,
+        "stock": 36,
+        "brand": "Samsung",
+        "category": "smartphones",
+        "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+        "images": [
+          "https://i.dummyjson.com/data/products/3/1.jpg"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Samsung Universe 9",
+        "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+        "price": 1249,
+        "discountPercentage": 15.46,
+        "rating": 4.09,
+        "stock": 36,
+        "brand": "Samsung",
+        "category": "smartphones",
+        "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+        "images": [
+          "https://i.dummyjson.com/data/products/3/1.jpg"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Samsung Universe 9",
+        "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+        "price": 1249,
+        "discountPercentage": 15.46,
+        "rating": 4.09,
+        "stock": 36,
+        "brand": "Samsung",
+        "category": "smartphones",
+        "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+        "images": [
+          "https://i.dummyjson.com/data/products/3/1.jpg"
+        ]
+      },
     ]
   };
   return obj;
@@ -80,8 +125,8 @@ export function Product() {
       try {
         // await async "fetchBooks()" function
         const prod = await fetchProduct();
-        setProduct(prod.data);
-        setCopyProduct(prod.data);
+        setProduct(prod.products);
+        setCopyProduct(prod.products);
       } catch (err) {
         console.log("Error occured when fetching books");
       }
@@ -125,6 +170,7 @@ export function Product() {
           style={{
             boxShadow: "rgb(31 31 33 / 20%) 0px 7px 29px 0px",
             background: "white",
+            minHeight: '85vh',
           }}
           className="mt-4 row"
         >
@@ -184,48 +230,50 @@ export function Product() {
             </div>
           </div>
           <div className="col-lg-9">
-            <div className="row m-2" style={{ "overflow": "auto", "height": "50rem" }}>
-              {copyProduct.map((item, e) => (
-                <div
-                  className=" col-sm-2"
-                  style={{
-                    "border-radius": "9px",
-                    border: "2px solid #cfcfcf85",
-                    margin: "5px",
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div id="" className="single-product">
-                    <div class="part-1">
-                      <span class="new p-2">{item.title}</span>
-                      <div>
-                        <Link to={{ pathname: `/login/product/SingleProduct/${item.id}` }} >
-                          {/* onClick={()=>{dispatch({type:uniqueProductDetails , data:item})}}  */}
-                          <img className="imageSize"
-                            src={"https://www.ippc.int/static/img/images/icone-home-capacity_B1.png"}
-                            alt="error"
-                          /></Link>
-                        {/* <button> */}
-                        <IoMdAddCircle
-                          onClick={() => {
-                            dispatch({ type: increment, data: item });
-                          }}
-                          style={{
-                            color: "green",
-                            fontSize: "25px",
-                            cursor: "pointer",
-                          }}
-                        />
+            <div className="" style={{ "overflow": "auto", height: '85vh' }}>
+              <div className="row m-2">
+                {copyProduct.map((item, e) => (
+                  <div
+                    className="col-auto"
+                    style={{
+                      "border-radius": "9px",
+                      border: "2px solid #cfcfcf85",
+                      margin: "5px",
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <div id="" className="single-product">
+                      <div class="part-1">
+                        <span class="new p-2">{item.title}</span>
+                        <div>
+                          <Link to={{ pathname: `/login/product/SingleProduct/${item.id}` }} >
+                            {/* onClick={()=>{dispatch({type:uniqueProductDetails , data:item})}}  */}
+                            <img className="imageSize"
+                              src={"https://www.ippc.int/static/img/images/icone-home-capacity_B1.png"}
+                              alt="error"
+                            /></Link>
+                          {/* <button> */}
+                          <IoMdAddCircle
+                            onClick={() => {
+                              dispatch({ type: increment, data: item });
+                            }}
+                            style={{
+                              color: "green",
+                              fontSize: "25px",
+                              cursor: "pointer",
+                            }}
+                          />
+                        </div>
+                        {/* </button> */}
                       </div>
-                      {/* </button> */}
-                    </div>
-                    <div class="part-2">
-                      <h3 class="product-title">Here Product Title</h3>
-                      <h4 class="product-price">${item.price}</h4>
+                      <div class="part-2">
+                        <h3 class="product-title">Here Product Title</h3>
+                        <h4 class="product-price">${item.price}</h4>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

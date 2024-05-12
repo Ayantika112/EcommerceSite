@@ -27,6 +27,7 @@ function LoginPage() {
   return (
     <>
       {!isLoggingTrue.isLogging ?
+      
         <div className="loginPage d-flex justify-content-center w-100 card">
           <div className="card-body">
             <form>
